@@ -9,5 +9,4 @@ Youtube Link : "https://www.youtube.com/watch?v=PBTYxXADG_k&list=PLillGF-RfqbbiT
 
 
 
-React js / Redux/redux-thunk / axios 
-Express / Mongo /
+React js / Redux/redux-thunk / axios / Express / Mongoose /
