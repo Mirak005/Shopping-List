@@ -45,7 +45,7 @@ export default function(state = initState, action) {
       localStorage.removeItem("token");
       return {
         token: localStorage.getItem("token"),
-        isAuth: null,
+        isAuth: false,
         isLoading: false,
         user: null
       };
