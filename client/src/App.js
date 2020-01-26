@@ -1,13 +1,19 @@
-import React from 'react';
+import React , { useEffect} from 'react';
+import {connect} from 'react-redux'
 import AppNav from "./components/AppNavbar"
 import ShoppingList from './components/ShoppingList'
 import ItemModal from './components/itemModal'
 import {Container} from 'reactstrap'
+import { loadUser } from './actions/authActions'
+import store from './store'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
 import './App.css';
 
 function App() {
+
+  useEffect(()=>{
+    store.dispatch(loadUser())
+  } )
   return (
     <div className="App">
      <AppNav/>
@@ -19,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(null , {loadUser})(App) ;
