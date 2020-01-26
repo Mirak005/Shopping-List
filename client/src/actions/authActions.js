@@ -12,26 +12,14 @@ import {
   } from "../actions/actionTypes";
 
   //check token && load user
-
+  //getState is store method 
   export const loadUser = () => (dispatch , getState)=>{
       //User Loading 
       dispatch({ type : USER_LOADING });
 
-      //Get token from localStoratge 
-      const token = getState().auth.token
-      //Headers 
-      const config = {
-          headers:{
-              "Content-type":"application/json"
-          }
-      }
-
-    // If token add to Headers
-    if(token){
-        config.headers["x-auth-token"] = token ;
-    }
+    
       axios
-      .get("/api/auth/user" , config )
+      .get("/api/auth/user" , tokenConfig(getState) )
       .then(res => dispatch({
           type:USER_LOADED ,
           payload : res.data
@@ -43,4 +31,22 @@ import {
           })
       })
       
+  }
+
+  //Setup Confing/headers and token 
+  export const tokenConfig = (getState) =>{
+        //Get token from localStoratge 
+        const token = getState().auth.token
+        //Headers 
+        const config = {
+            headers:{
+                "Content-type":"application/json"
+            }
+        }
+  
+      // If token add to Headers
+      if(token){
+          config.headers["x-auth-token"] = token ;
+      }
+      return config ;
   }
