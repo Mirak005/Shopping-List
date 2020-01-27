@@ -5,9 +5,7 @@ export const getItems = () => dispatch => {
   dispatch(setItemLoading());
   axios
     .get("/api/items")
-    .then(res =>
-      dispatch({ type: GET_ITEMS, payload: res.data }, console.log(res.data))
-    );
+    .then(res => dispatch({ type: GET_ITEMS, payload: res.data }));
 };
 export const addItem = newItem => dispatch => {
   axios
